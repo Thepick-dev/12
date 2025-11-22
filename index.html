@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<title>LMS XII</title>
+
+<!-- Fonts: Alex Brush for title, League Spartan as condensed body font substitute -->
+<link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=League+Spartan:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --blue: #00f2ff;
+    --magenta: #ff00ff;
+    --green: #00ff66;
+    --orange: #ff6600;
+    --yellow: #ffd400;
+    --bg: #ffffff;
+    --text: #000000;
+  }
+
+  html,body{
+    height:100%;
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+  }
+
+  /* Fonts */
+  h1 { font-family: "Alex Brush", serif; }
+  body, a, nav, .option { font-family: "League Spartan", "Oswald", "Arial Narrow", Arial, sans-serif; }
+
+  /* Layout: compact and moved up so content fits on mobile */
+  .wrap{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:flex-start; /* move everything upward */
+    padding:16px 18px 28px; /* tighter padding */
+    box-sizing:border-box;
+  }
+
+  /* Header (compact) */
+  .topnav{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    gap:14px;
+    padding:8px 0;
+    border-bottom:2px solid #000;
+    box-sizing:border-box;
+  }
+  .topnav a{
+    text-decoration:none;
+    color:var(--text);
+    font-weight:700;
+    font-size:14px;
+    letter-spacing:0.6px;
+  }
+
+  /* Title */
+  h1{
+    margin:18px 0 12px;
+    font-size:84px;       /* large title */
+    line-height:0.9;
+    color:var(--text);
+    text-align:center;
+  }
+
+  /* Subtitle / small description (optional) */
+  .subtitle{
+    margin:0 0 12px;
+    font-size:12px;
+    color:#222;
+    opacity:0.9;
+  }
+
+  /* Option list - no boxes, vertical list, big black text */
+  .options{
+    width:100%;
+    max-width:420px;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    margin-top:6px;
+    margin-bottom:8px;
+    align-items:stretch;
+  }
+
+  .option {
+    position:relative;
+    display:block;
+    width:100%;
+    text-align:center;
+    padding:8px 12px;
+    cursor:pointer;
+    color:var(--text);
+    background:transparent;
+    border-radius:8px;
+    font-size:46px;        /* large option text */
+    font-weight:700;
+    line-height:0.95;
+    text-decoration:none;
+    user-select:none;
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+  }
+
+  /* neon outline element (invisible by default) */
+  .option::after{
+    content:"";
+    position:absolute;
+    inset: -8px; /* space around text for the neon line */
+    border-radius:10px;
+    pointer-events:none;
+    opacity:0;
+    box-shadow: none;
+    transition: opacity 220ms ease, box-shadow 220ms ease, transform 220ms ease;
+  }
+
+  /* colour variants for each option */
+  .option.predict::after { border:2px solid var(--blue); }
+  .option.table::after   { border:2px solid var(--magenta); }
+  .option.updates::after { border:2px solid var(--green); }
+  .option.rules::after   { border:2px solid var(--orange); }
+  .option.weekpicks::after { border:2px solid var(--yellow); }
+
+  /* Selected state: neon line appears with a subtle glow and a short "fizz" animation */
+  .option.selected::after{
+    opacity:1;
+    transform: scale(1);
+    box-shadow: 0 0 10px currentColor, 0 0 26px currentColor, 0 0 40px currentColor;
+    animation: neon-fizz 900ms ease;
+  }
+
+  /* currentColor picks up the border color by inheriting it via inline style or currentColor setting */
+  .option.predict.selected { color:var(--blue); }
+  .option.table.selected   { color:var(--magenta); }
+  .option.updates.selected { color:var(--green); }
+  .option.rules.selected   { color:var(--orange); }
+  .option.weekpicks.selected { color:var(--yellow); }
+
+  @keyframes neon-fizz {
+    0% { box-shadow: 0 0 0px rgba(255,255,255,0); transform: scale(.99); }
+    40% { box-shadow: 0 0 12px currentColor, 0 0 28px currentColor; transform: scale(1.01); }
+    75% { box-shadow: 0 0 6px currentColor, 0 0 16px currentColor; transform: scale(1); }
+    100% { box-shadow: 0 0 8px currentColor, 0 0 20px currentColor; transform: scale(1); }
+  }
+
+  /* Footer nav compact */
+  .foot{
+    width:100%;
+    border-top:2px solid #000;
+    padding:12px 0 6px;
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    margin-top:auto;
+    box-sizing:border-box;
+  }
+  .foot a{ text-decoration:none; color:var(--text); font-weight:700; font-size:13px; }
+
+  /* Tighter mobile scaling */
+  @media (max-width:420px){
+    h1{ font-size:56px; margin:10px 0 6px; }
+    .option{ font-size:40px; padding:6px 8px; }
+    .options{ gap:10px; max-width:360px; }
+    .menuCompactSpacer{ height:6px; }
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <nav class="topnav" aria-label="Top navigation">
+      <a href="index.html">Home</a>
+      <a href="picks.html">Predict</a>
+      <a href="table.html">Table</a>
+      <a href="updates.html">Updates</a>
+      <a href="rules.html">Rules</a>
+      <a href="weekpicks.html">Picks by Week</a>
+    </nav>
+
+    <main style="width:100%;display:flex;flex-direction:column;align-items:center;">
+      <h1>LMS XII</h1>
+      <div class="subtitle" aria-hidden="true">Pick a team — one pick per week</div>
+
+      <div class="options" role="list">
+        <a role="listitem" href="picks.html" class="option predict" data-color="--blue">PREDICT</a>
+        <a role="listitem" href="table.html" class="option table" data-color="--magenta">TABLE</a>
+        <a role="listitem" href="updates.html" class="option updates" data-color="--green">UPDATES</a>
+        <a role="listitem" href="rules.html" class="option rules" data-color="--orange">RULES</a>
+        <a role="listitem" href="weekpicks.html" class="option weekpicks" data-color="--yellow">WEEK PICKS</a>
+      </div>
+    </main>
+
+    <footer class="foot" aria-label="Footer navigation">
+      <a href="index.html">Home</a>
+      <a href="picks.html">Predict</a>
+      <a href="table.html">Table</a>
+      <a href="updates.html">Updates</a>
+      <a href="rules.html">Rules</a>
+    </footer>
+  </div>
+
+<script>
+  // Simple JS: add 'selected' class to tapped option to show neon animation.
+  // Only one selected at a time. Works on tap/click and keyboard (Enter).
+  (function(){
+    const options = document.querySelectorAll('.option');
+    options.forEach(opt=>{
+      // keyboard accessibility
+      opt.setAttribute('tabindex', '0');
+      opt.addEventListener('click', handleSelect);
+      opt.addEventListener('keydown', (e)=> { if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleSelect.call(opt,e); if(opt.href) location.href = opt.href; }});
+    });
+
+    function handleSelect(e){
+      // remove from others
+      options.forEach(o=> o.classList.remove('selected'));
+      // add to this
+      this.classList.add('selected');
+
+      // remove 'selected' after animation finishes (keeps a soft glow)
+      clearTimeout(this._neonTimer);
+      this._neonTimer = setTimeout(()=> {
+        // keep subtle glow but remove pulsating animation by re-applying class with lower opacity
+        // (we do nothing here so the glow remains)
+      }, 1200);
+    }
+  })();
+</script>
+</body>
+</html>
