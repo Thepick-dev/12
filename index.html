@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>LMS XII</title>
+
+<!-- Title font: Bebas Neue (as you requested). Body uses "League Gothic" name with fallbacks. -->
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=League+Spartan:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --blue:#00f2ff;
+    --magenta:#ff00ff;
+    --green:#00ff66;
+    --orange:#ff6600;
+    --yellow:#ffd400;
+    --text:#000000;
+    --flash-duration:320ms;
+  }
+
+  html,body{height:100%;margin:0;background:#fff;color:var(--text);-webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;}
+  body{
+    font-family: "League Gothic", "League Spartan", "Oswald", Arial, sans-serif;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:flex-start;
+  }
+
+  /* Top nav - compact */
+  .topnav{
+    width:100%;
+    max-width:760px;
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    padding:8px 12px;
+    border-bottom:2px solid #000;
+    box-sizing:border-box;
+  }
+  .topnav a{
+    text-decoration:none;
+    color:var(--text);
+    font-weight:700;
+    font-size:14px;
+    padding:6px 8px;
+    outline:none;
+  }
+
+  /* Main wrapper moved up & tighter so content fills the screen on mobile */
+  .wrap{
+    width:100%;
+    max-width:760px;
+    padding:6px 12px 8px;
+    box-sizing:border-box;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    min-height:calc(100vh - 64px);
+  }
+
+  /* Title uses Bebas Neue */
+  h1{
+    font-family: "Bebas Neue", "League Spartan", sans-serif;
+    margin:4px 0 6px;
+    font-size: clamp(72px, 20vw, 180px); /* very large, responsive */
+    line-height:0.82;
+    text-align:center;
+    color:var(--text);
+    letter-spacing:1px;
+  }
+
+  /* Tagline slightly larger */
+  .subtitle{
+    margin:0 0 12px;
+    font-size:18px;
+    color:#222;
+    opacity:0.95;
+  }
+
+  /* Options list — no boxes, italic, larger, spaced out more */
+  .options{
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    gap:22px;
+    align-items:center;
+    margin-top:8px;
+  }
+
+  .option{
+    width:100%;
+    max-width:520px;
+    text-align:center;
+    font-size: clamp(34px, 9.5vw, 68px); /* large option text */
+    font-style:italic; /* italicised */
+    font-weight:700;
+    color:var(--text);
+    text-decoration:none;
+    padding:8px 12px;
+    user-select:none;
+    -webkit-tap-highlight-color: transparent;
+    outline:none;
+    display:block;
+    transition: transform 140ms ease;
+  }
+  .option:active{ transform: scale(0.995); }
+
+  /* classes used for flash color only (no persistent color) */
+  .option.predict { --col: var(--blue); }
+  .option.table   { --col: var(--magenta); }
+  .option.updates { --col: var(--green); }
+  .option.rules   { --col: var(--orange); }
+  .option.weekpicks { --col: var(--yellow); }
+
+  /* Flash animation (text color + glow then revert) */
+  @keyframes instantFlash {
+    0%   { color:var(--text); text-shadow:none; }
+    20%  { color: var(--col); text-shadow: 0 0 8px rgba(0,0,0,0); }
+    60%  { color: var(--col); text-shadow: 0 0 12px var(--col), 0 0 22px rgba(0,0,0,0.03); }
+    100% { color: var(--text); text-shadow:none; }
+  }
+  .flash { animation: instantFlash var(--flash-duration) ease forwards; }
+
+  /* Footer — brought up slightly */
+  .foot{
+    width:100%;
+    max-width:760px;
+    padding:8px 12px;
+    border-top:2px solid #000;
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    box-sizing:border-box;
+    margin-top:6px;
+  }
+  .foot a{ text-decoration:none; color:var(--text); font-weight:700; font-size:13px; padding:4px; outline:none; }
+
+  /* Clear transient state when coming back via back button */
+  @media (max-width:420px){
+    h1{ font-size: clamp(64px, 26vw, 150px); margin:6px 0 6px; }
+    .subtitle{ font-size:16px; }
+    .options{ gap:18px; }
+  }
+</style>
+</head>
+<body>
+  <nav class="topnav" aria-label="Top navigation">
+    <a href="index.html" class="navlink" data-hex="#000000">Home</a>
+    <a href="picks.html" class="navlink" data-hex="#00f2ff">Predict</a>
+    <a href="table.html" class="navlink" data-hex="#ff00ff">Table</a>
+    <a href="updates.html" class="navlink" data-hex="#00ff66">Updates</a>
+    <a href="rules.html" class="navlink" data-hex="#ff6600">Rules</a>
+    <a href="weekpicks.html" class="navlink" data-hex="#ffd400">Week Picks</a>
+  </nav>
+
+  <main class="wrap" role="main">
+    <h1>LMS XII</h1>
+    <div class="subtitle">Pick one team each week — be strategic</div>
+
+    <div class="options" role="list">
+      <a role="listitem" href="picks.html" class="option predict" data-hex="#00f2ff">PREDICT</a>
+      <a role="listitem" href="table.html" class="option table" data-hex="#ff00ff">TABLE</a>
+      <a role="listitem" href="updates.html" class="option updates" data-hex="#00ff66">UPDATES</a>
+      <a role="listitem" href="rules.html" class="option rules" data-hex="#ff6600">RULES</a>
+      <a role="listitem" href="weekpicks.html" class="option weekpicks" data-hex="#ffd400">WEEK PICKS</a>
+    </div>
+  </main>
+
+  <footer class="foot" role="contentinfo">
+    <a href="index.html" class="navlink" data-hex="#000000">Home</a>
+    <a href="picks.html" class="navlink" data-hex="#00f2ff">Predict</a>
+    <a href="table.html" class="navlink" data-hex="#ff00ff">Table</a>
+    <a href="updates.html" class="navlink" data-hex="#00ff66">Updates</a>
+    <a href="rules.html" class="navlink" data-hex="#ff6600">Rules</a>
+  </footer>
+
+<script>
+(function(){
+  const DURATION = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--flash-duration')) || 320;
+
+  function flashThenNavigate(el, href){
+    const hex = el.getAttribute('data-hex') || '#000';
+    el.style.setProperty('--col', hex);
+    el.setAttribute('data-temp-flash','1');
+    el.classList.add('flash');
+
+    setTimeout(()=>{
+      el.classList.remove('flash');
+      el.removeAttribute('data-temp-flash');
+      el.style.removeProperty('--col');
+      if(href && href !== window.location.pathname && href !== window.location.href){
+        window.location.href = href;
+      }
+    }, DURATION + 20);
+  }
+
+  const clickable = Array.from(document.querySelectorAll('.option, .navlink'));
+  clickable.forEach(el=>{
+    el.setAttribute('tabindex','0');
+
+    el.addEventListener('click', function(e){
+      e.preventDefault();
+      const href = el.getAttribute('href');
+      flashThenNavigate(el, href);
+    });
+
+    el.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){
+        e.preventDefault();
+        const href = el.getAttribute('href');
+        flashThenNavigate(el, href);
+      }
+    });
+  });
+
+  // Clear transient flash state on pageshow (handles browser back/navigation)
+  window.addEventListener('pageshow', function(){
+    document.querySelectorAll('[data-temp-flash]').forEach(el=>{
+      el.classList.remove('flash');
+      el.removeAttribute('data-temp-flash');
+      el.style.removeProperty('--col');
+    });
+    clickable.forEach(el => el.style.removeProperty('--col'));
+  });
+
+  // Ensure no flash on initial load
+  document.addEventListener('DOMContentLoaded', function(){
+    document.querySelectorAll('.flash').forEach(el=> el.classList.remove('flash'));
+  });
+
+})();
+</script>
+</body>
+</html>
