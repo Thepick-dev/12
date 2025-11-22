@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>LMS XII</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
+<style>
+body {
+  margin:0;
+  font-family:'Oswald', sans-serif;
+  background:#fff;
+  color:#000;
+  text-align:center;
+}
+
+.topnav {
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  padding:18px 0;
+  border-bottom:2px solid #000;
+}
+
+.topnav a {
+  color:#000;
+  text-decoration:none;
+  font-weight:700;
+  transition:color 0.2s;
+}
+
+.topnav a.active {
+  color:#00f2ff;
+}
+
+h1 {
+  font-size:96px;
+  margin:60px 0;
+  color:#000;
+}
+
+.menu-boxes {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:20px;
+  margin:40px 0;
+}
+
+.menu-box {
+  width:300px;
+  height:120px;
+  background:rgba(255,255,255,0.9);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:50px; /* text much larger */
+  font-weight:700;
+  cursor:pointer;
+  border-radius:8px;
+  border:4px solid;
+  color:#000;
+  transition:all 0.3s, box-shadow 0.3s;
+}
+
+.menu-box:hover {
+  box-shadow:0 0 20px currentColor;
+}
+
+/* Unique neon outlines */
+.menu-predict { border-color:#00f2ff;}
+.menu-table { border-color:#ff00ff;}
+.menu-updates { border-color:#00ff00;}
+.menu-rules { border-color:#ff6600;}
+
+.bottomnav {
+  margin-top:60px;
+  padding:25px 0;
+  border-top:2px solid #000;
+  display:flex;
+  justify-content:center;
+  gap:15px;
+}
+
+.bottomnav a {
+  color:#000;
+  text-decoration:none;
+  font-weight:700;
+  transition:color 0.2s;
+}
+
+.bottomnav a.active {
+  color:#00f2ff;
+}
+</style>
+</head>
+<body>
+
+<div class="topnav">
+<a href="index.html" class="active">Home</a>
+<a href="picks.html">Predict</a>
+<a href="table.html">Table</a>
+<a href="updates.html">Updates</a>
+<a href="rules.html">Rules</a>
+<a href="weekpicks.html">Picks by Week</a>
+</div>
+
+<h1>LMS XII</h1>
+
+<div class="menu-boxes">
+<div class="menu-box menu-predict" onclick="location.href='picks.html'">PREDICT</div>
+<div class="menu-box menu-table" onclick="location.href='table.html'">TABLE</div>
+<div class="menu-box menu-updates" onclick="location.href='updates.html'">UPDATES</div>
+<div class="menu-box menu-rules" onclick="location.href='rules.html'">RULES</div>
+</div>
+
+<div class="bottomnav">
+<a href="index.html" class="active">Home</a> |
+<a href="picks.html">Predict</a> |
+<a href="table.html">Table</a> |
+<a href="updates.html">Updates</a> |
+<a href="rules.html">Rules</a> |
+<a href="weekpicks.html">Picks by Week</a>
+</div>
+
+</body>
+</html>
