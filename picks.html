@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>LMS XII — Predict</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+body{margin:0;font-family:'Bebas Neue',sans-serif;background:#fff;color:#000;text-align:center;}
+.topnav{display:flex;justify-content:center;gap:20px;padding:18px 0;border-bottom:2px solid #000;}
+.topnav a{color:#000;text-decoration:none;font-weight:700;transition:color 0.2s,text-shadow 0.2s;}
+.topnav a.active{color:#00f2ff;text-shadow:0 0 4px rgba(0,242,255,0.5);}
+h1{font-size:56px;margin:32px 0;}
+h2{font-size:32px;margin:24px 0;}
+table{border-collapse:collapse;margin:16px auto;font-size:16px;width:95%;max-width:1200px;}
+th,td{border:1px solid #000;padding:8px;text-align:center;}
+th{background:#000;color:#fff;font-size:18px;}
+form{margin:24px auto;padding:20px;border:2px solid #00f2ff;max-width:400px;border-radius:8px;box-shadow:0 0 12px #00f2ff;}
+form h2{margin-bottom:12px;}
+input,select,button{display:block;width:90%;margin:8px auto;padding:10px;font-size:18px;border-radius:4px;border:1px solid #000;}
+button{font-weight:700;cursor:pointer;background:#000;color:#fff;transition:all 0.2s;}
+button:hover{background:#00f2ff;box-shadow:0 0 12px #00f2ff;}
+.player-grid{margin:24px auto;max-width:1200px;}
+.player-grid h3{text-align:left;margin-left:12px;color:#00f2ff;}
+.bottomnav{margin-top:40px;padding:25px 0;border-top:2px solid #000;}
+.bottomnav a{color:#000;text-decoration:none;font-weight:700;margin:0 12px;transition:color 0.2s,text-shadow 0.2s;}
+.bottomnav a.active{color:#00f2ff;text-shadow:0 0 4px rgba(0,242,255,0.5);}
+</style>
+</head>
+<body>
+
+<div class="topnav">
+<a href="index.html">Home</a>
+<a href="picks.html" class="active">Predict</a>
+<a href="standings.html">Standings</a>
+<a href="updates.html">Updates</a>
+<a href="rules.html">Rules</a>
+<a href="weekpicks.html">Picks by Week</a>
+</div>
+
+<h1>Week 10 — Make Your Pick</h1>
+
+<h2>Current Week Fixtures</h2>
+<table>
+<tr><th>Home</th><th>Away</th><th>Home Q</th><th>Away Q</th></tr>
+<tr><td>Man Utd</td><td>Liverpool</td><td>Q1</td><td>Q1</td></tr>
+<tr><td>Arsenal</td><td>Spurs</td><td>Q1</td><td>Q1</td></tr>
+<tr><td>Leeds</td><td>Villa</td><td>Q4</td><td>Q1</td></tr>
+<tr><td>Burnley</td><td>Chelsea</td><td>Q4</td><td>Q1</td></tr>
+<tr><td>West Ham</td><td>Bournemouth</td><td>Q4</td><td>Q2</td></tr>
+<tr><td>Brighton</td><td>Brentford</td><td>Q2</td><td>Q2</td></tr>
+<tr><td>Newcastle</td><td>Man City</td><td>Q3</td><td>Q1</td></tr>
+<tr><td>Fulham</td><td>Sunderland</td><td>Q3</td><td>Q1</td></tr>
+</table>
+
+<h2>Leaderboard Snapshot</h2>
+<table>
+<tr><th>Rank</th><th>Player</th><th>Points</th></tr>
+<tr><td>1</td><td>Kit</td><td>102</td></tr>
+<tr><td>2</td><td>Locky</td><td>98</td></tr>
+<tr><td>3</td><td>T-City</td><td>95</td></tr>
+<tr><td>4</td><td>Billy</td><td>90</td></tr>
+<tr><td>5</td><td>Ingz</td><td>88</td></tr>
+<tr><td>6</td><td>Crosbo</td><td>85</td></tr>
+<tr><td>7</td><td>Kabz</td><td>82</td></tr>
+<tr><td>8</td><td>Stoobz</td><td>78</td></tr>
+</table>
+
+<h2>Submit Your Pick</h2>
+<form id="pickForm">
+<h2>Your Pick</h2>
+<input type="text" name="playerName" placeholder="Your Name" required>
+<select name="teamPick" required>
+<option value="">Select Team</option>
+<option>Arsenal</option>
+<option>Man Utd</option>
+<option>Liverpool</option>
+<option>Spurs</option>
+<option>Villa</option>
+<option>Leeds</option>
+<option>Burnley</option>
+<option>Chelsea</option>
+<option>West Ham</option>
+<option>Bournemouth</option>
+<option>Brighton</option>
+<option>Brentford</option>
+<option>Newcastle</option>
+<option>Fulham</option>
+<option>Sunderland</option>
+<option>Man City</option>
+</select>
+<input type="text" name="playerPick" placeholder="Player Pick" required>
+<button type="submit">Submit</button>
+</form>
+
+<h2>Players’ Grid (Mock Data)</h2>
+
+<!-- Example Grid for Kit -->
+<div class="player-grid">
+<h3>Kit</h3>
+<table>
+<tr><th>Week</th><th>Team Pick</th><th>Team Points</th><th>Player Pick</th><th>Player Points</th><th>Week Total</th><th>Remaining Teams</th></tr>
+<tr><td>1</td><td>Arsenal</td><td>3</td><td>Salah</td><td>2</td><td>5</td><td>Man Utd, Liverpool, Palace, Newcastle, Brighton</td></tr>
+<tr><td>2</td><td>Man Utd</td><td>3</td><td>Bruno</td><td>1</td><td>4</td><td>Liverpool, Palace, Newcastle, Brighton</td></tr>
+<tr><td>3</td><td>Liverpool</td><td>1</td><td>Mateta</td><td>1</td><td>2</td><td>Palace, Newcastle, Brighton</td></tr>
+<tr><td>4</td><td>Palace</td><td>0</td><td>Salah</td><td>2</td><td>2</td><td>Newcastle, Brighton</td></tr>
+<tr><td>5</td><td>Brighton</td><td>1</td><td>Gakpo</td><td>1</td><td>2</td><td>Newcastle</td></tr>
+<tr><td>6</td><td>Newcastle</td><td>3</td><td>Mateta</td><td>0</td><td>3</td><td>-</td></tr>
+<tr><td>7</td><td>Fulham</td><td>1</td><td>Mbeumo</td><td>1</td><td>2</td><td>-</td></tr>
+<tr><td>8</td><td>Spurs</td><td>3</td><td>Salah</td><td>2</td><td>5</td><td>-</td></tr>
+<tr><td>9</td><td>Villa</td><td>0</td><td>Bruno</td><td>1</td><td>1</td><td>-</td></tr>
+<tr><td>10</td><td>Man City</td><td>3</td><td>De Bruyne</td><td>3</td><td>6</td><td>-</td></tr>
+</table>
+</div>
+
+<!-- Repeat similar grids for Locky, Billy, Ingz, Crosbo, Kabz, Stoobz -->
+
+<div class="bottomnav">
+<a href="index.html">Home</a> |
+<a href="picks.html" class="active">Predict</a> |
+<a href="standings.html">Standings</a> |
+<a href="updates.html">Updates</a> |
+<a href="rules.html">Rules</a> |
+<a href="weekpicks.html">Picks by Week</a>
+</div>
+
+<script>
+// Placeholder: handle form submission
+document.getElementById('pickForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  const name=this.playerName.value;
+  const team=this.teamPick.value;
+  const player=this.playerPick.value;
+  console.log('Submission:',{name,team,player});
+  alert('Pick submitted (mock)! See console for data.');
+});
+</script>
+
+</body>
+</html>
